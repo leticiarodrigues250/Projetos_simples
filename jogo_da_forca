@@ -1,0 +1,51 @@
+import random
+
+palavras = ["computador", "cachorro", "mulher", "quadro", "brasil", "pessoa", "helicoptero", "triangulo", "parede"]
+
+palavra = random.choice(palavras)
+
+tentativas = 0
+
+chances = 6
+
+letras_escolhidas = []
+
+estado_atual = ["_"] * len(palavra)
+
+print ("Bem-vindo ao jogo da forca")
+print ("Seu objetivo é tentar acertar a palavra secreta")
+print ("Você terá que tentar 1 letra por vez")
+print ("Caso você acerte, a letra será colocada no estado atual")
+print (f"Caso você erre, você perderá uma chance, você tem no máximo {chances} tentativas\n")
+
+while tentativas <= chances and ''.join(estado_atual) != palavra:
+    letra = input("\n\nQual letra você quer tentar?")
+    while letra in letras_escolhidas:
+        print ("Você escolheu uma letra que já tinha tentado, escolha outra")
+        letra = input("\nQual letra você quer tentar?")
+
+    letras_escolhidas.append(letra)
+    if letra in palavra:
+        print ("Parabéns, você acertou a letra!")
+        for i in range(len(palavra)):
+            if letra == palavra[i]:
+             estado_atual[i] = letra
+
+    else:
+        print ("Que pensa, você errou!")
+        tentativas = tentativas + 1
+
+    print ("Você já fez", tentativas, "tentativas e ainda tem", chances-tentativas, "tentativas")
+    print (f"Esse é o estado atual:", estado_atual)
+    print ("As letras que você já tentou são:", letras_escolhidas)
+    for item in letras_escolhidas:
+        print(item, end=" ")
+
+if tentativas == chances:
+    print ("\n\nVocê perdeu!!!")
+    print ("Acabaram suas tentativas")
+
+else:
+    print ("\n\nVocê ganhou, parabéns!")
+
+    print ("A palavra era", palavra)
