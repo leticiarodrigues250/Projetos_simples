@@ -1,0 +1,42 @@
+import random
+
+print ("Bem-vindo à batalha Pokemon")
+
+vida_inimigo = 50
+vida = 50
+
+while vida > 0 and vida_inimigo > 0:
+    print ("\nLista de ataques possíveis do Pikachu:")
+    print ("A) Choque do Trovão")
+    print ("B) Cabeçada")
+    print ("C) Trovão Master")
+
+    ataque = input("\nEscolha qual ataque você quer usar: ")
+
+    if ataque == "a":
+        print ("Você usou o Choque do Trovão")
+        vida_inimigo = vida_inimigo - 12
+    elif ataque == "b":
+        print ("Você usou a Cabeçada")
+        vida_inimigo = vida_inimigo - 7
+    else:
+        print ("Você usou o Trovão Master")
+        vida_inimigo = vida_inimigo - 18
+
+    print ("A vida do inimigo agora é", vida_inimigo)
+
+    print ("\n\nO Charmander te ataca")
+    ataque_inimigo_chance = random.randint(0,1)
+    if ataque_inimigo_chance == 1:
+        print ("Chamander usa bola de fogo")
+        vida = vida - 15
+    else:
+        print ("Chamander usa o arranhão")
+        vida = vida - 8
+
+    print ("Sua vida agora é", vida)
+
+if vida <= 0:
+    print("\n\nO Chamander ganhou! :( ")
+else:
+    print("\n\nO Pikachu venceu, parabéns!!! :)")
